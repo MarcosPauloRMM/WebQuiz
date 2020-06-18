@@ -39,6 +39,7 @@ public class DbListener implements ServletContextListener {
                     + "name VARCHAR(200) NOT NULL,"
                     + "login VARCHAR(50) UNIQUE NOT NULL,"
                     + "password_hash LONG,"
+                    + "password_hash LONG,"
                     + ")";
             stmt.executeUpdate(SQL);
             
@@ -47,7 +48,7 @@ public class DbListener implements ServletContextListener {
             if (User.getUsers().isEmpty()){
                 //CRIANDO USUARIOS
                 SQL = "INSERT INTO users(name, login, password_hash) "
-                    + "VALUES('Marcos Paulo da Rocha Moura', 'Marcos Paulo', '"+("".hashCode())+"')";
+                    + "VALUES('Marcos Paulo da Rocha Moura', 'Marcos Paulo', '"+("123456".hashCode())+"')";
                 stmt.executeUpdate(SQL);  
             }
             
@@ -96,7 +97,8 @@ public class DbListener implements ServletContextListener {
                     + "VALUES('Quantos presidentes tivemso até 2020?', '38', '40', '66', '39')";
                 stmt.executeUpdate(SQL);
             }
-             //CRIANDO TABELA RESULTS PARA ARMAZENAR RESULTADOS
+            
+            /*CRIANDO TABELA RESULTS PARA ARMAZENAR RESULTADOS
             step = "result Table creation";
             SQL = "CREATE TABLE IF NOT EXISTS results("
                     + "name VARCHAR(250) PRIMARY KEY,"
@@ -129,7 +131,7 @@ public class DbListener implements ServletContextListener {
             SQL = "INSERT INTO result(name, result)"
                     + "VALUES('Vinicius',1)";
             }
-            
+            */
         }catch (Exception ex){
             exceptionMessage = step + ": " + ex;
         }
