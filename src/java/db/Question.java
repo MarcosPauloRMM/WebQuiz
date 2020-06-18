@@ -7,7 +7,6 @@ package db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class Question {
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.URL);
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM categories ORDER BY name");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM questions");
         while(rs.next()){
             list.add(new Question(
                     rs.getString("description"), 

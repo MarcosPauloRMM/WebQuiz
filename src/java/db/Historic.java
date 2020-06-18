@@ -6,6 +6,7 @@
 package db;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
@@ -75,4 +76,41 @@ public class Historic {
         return historics;
     }
     
+    
+    private static final ArrayList<Historic> listhistoric = new ArrayList<>();
+    
+    public static ArrayList<Historic> getHistoric(){
+        
+        Calendar cal = Calendar.getInstance();
+        
+        if (listhistoric.isEmpty()) {
+            
+            cal.set(2020, 6, 20, 20, 39);
+            listhistoric.add(new Historic ("Marcos", 10, cal.getTime()));
+            cal.set(2020, 6, 20, 19, 32);
+            listhistoric.add(new Historic ("João Vinicius",8 , cal.getTime()));
+            cal.set(2020, 6, 19, 23, 39);
+            listhistoric.add(new Historic ("Mari", 4, cal.getTime()));
+            cal.set(2020, 6, 19, 22, 39);
+            listhistoric.add(new Historic ("Evelyn",6 , cal.getTime()));
+            cal.set(2020, 6, 19, 16, 39);
+            listhistoric.add(new Historic ("Vinicius",1 , cal.getTime()));
+            cal.set(2020, 6, 19, 12, 39);
+            listhistoric.add(new Historic ("Guilherme",3 , cal.getTime()));
+            cal.set(2020, 6, 18, 9, 39);
+            listhistoric.add(new Historic ("João Vitor", 7, cal.getTime()));
+            cal.set(2020, 6, 18, 8, 39);
+            listhistoric.add(new Historic ("Kauã",2 , cal.getTime()));
+            cal.set(2020, 6, 18, 03, 39);
+            listhistoric.add(new Historic ("Nicolas", 9, cal.getTime()));
+            cal.set(2020, 6, 17, 11, 39);
+            listhistoric.add(new Historic ("Fernanda", 5, cal.getTime()));
+            
+            
+
+        }
+        
+        return listhistoric;
+        
+    }
 }

@@ -66,7 +66,7 @@ public class User {
     public static void addUser(String login, String name,String password) throws Exception{
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.URL);
-        String SQL = "INSERT INTO users(login, name, password_hash) VALUES(?,?,?,?)";
+        String SQL = "INSERT INTO users(login, name, password_hash) VALUES(?,?,?)";
         PreparedStatement stmt = con.prepareStatement(SQL);
         stmt.setString(1, login);
         stmt.setString(2, name);

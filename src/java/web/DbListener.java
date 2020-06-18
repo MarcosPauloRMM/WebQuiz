@@ -2,14 +2,11 @@ package web;
 
 
 import db.Question;
+import db.Result;
 import db.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -19,7 +16,7 @@ import javax.servlet.ServletContextListener;
  * @author @author MarcosPauloRMM
  */
 public class DbListener implements ServletContextListener {
-    public static final String URL = "jdbc:sqlite:C:\\Users\\User\\Desktop";
+    public static final String URL = "jdbc:sqlite:webquiz.db";
     public static String exceptionMessage = null;
     
     @Override
@@ -48,21 +45,14 @@ public class DbListener implements ServletContextListener {
             //CRIANDO TABELA USERS PARA ARMAZENAr USUARIOS
             step = "Default users creation";
             if (User.getUsers().isEmpty()){
-                SQL = "INSERT INTO users(name, login, password_hash) "
-                    + "VALUES('Marcos Paulo da Rocha Moura', 'Marcos Paulo', '"+("123456".hashCode())+"')";
-                stmt.executeUpdate(SQL);
-                
                 //CRIANDO USUARIOS
                 SQL = "INSERT INTO users(name, login, password_hash) "
-                    + "VALUES('Cleber', 'Cleber', '"+("123456".hashCode())+"')";
-                stmt.executeUpdate(SQL);
-                SQL = "INSERT INTO users(name, login, password_hash) "
-                    + "VALUES('Francisco', 'Francisco', '"+("123456".hashCode())+"')";
-                stmt.executeUpdate(SQL);
+                    + "VALUES('Marcos Paulo da Rocha Moura', 'Marcos Paulo', '"+("".hashCode())+"')";
+                stmt.executeUpdate(SQL);  
             }
             
             //CRIANDO TABELA QUESTIONS PARA ARMAZENAR PERGUNTASE E RESPOSTAS
-            step = "questions Table creation";
+            step = "questions Table questions";
             SQL = "CREATE TABLE IF NOT EXISTS questions("
                     + "description VARCHAR(250) PRIMARY KEY,"
                     + "answer VARCHAR(250) NOT NULL"
@@ -73,7 +63,7 @@ public class DbListener implements ServletContextListener {
             stmt.executeUpdate(SQL);
             
             //CRIANDO PERGUNTAS E RESPOSTAS
-            step = "Default categories creation";
+            step = "Default questions creation";
             if (Question.getQuestions().isEmpty()){
                 SQL = "INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
                     + "VALUES('Em que ano aconteceu a revolução Francesa?', '1789', '1788', '1790', '1791')";
@@ -105,8 +95,41 @@ public class DbListener implements ServletContextListener {
                 SQL = "INSERT INTO categories(description, answer, answerwrong1, answerwrong2, answerwrong3) "
                     + "VALUES('Quantos presidentes tivemso até 2020?', '38', '40', '66', '39')";
                 stmt.executeUpdate(SQL);
- 
             }
+             //CRIANDO TABELA RESULTS PARA ARMAZENAR RESULTADOS
+            step = "result Table creation";
+            SQL = "CREATE TABLE IF NOT EXISTS results("
+                    + "name VARCHAR(250) PRIMARY KEY,"
+                    + "result NUMBER(10) NOT NULL"
+                    +")";
+            stmt.executeUpdate(SQL);
+             
+            //CRIANDO RESULTADOS
+            step = "Default results creation";
+            if (Result.getResults().isEmpty()){
+            
+            SQL = "INSERT INTO result(name, result)"
+                    + "VALUES('Marcos',10)";
+            SQL = "INSERT INTO result(name, result)"
+                    + "VALUES('Nicolas',9)";
+            SQL = "INSERT INTO result(name, result)"
+                    + "VALUES('João Vinicius',8)";
+            SQL = "INSERT INTO result(name, result)"
+                    + "VALUES('João Vitor',7)";
+            SQL = "INSERT INTO result(name, result)"
+                    + "VALUES('Evelyn',6)";
+            SQL = "INSERT INTO result(name, result)"
+                    + "VALUES('Fernanda',5)";
+            SQL = "INSERT INTO result(name, result)"
+                    + "VALUES('Mari',4)";
+            SQL = "INSERT INTO result(name, result)"
+                    + "VALUES('Guilherme',3)";
+            SQL = "INSERT INTO result(name, result)"
+                    + "VALUES('Kauã',2)";
+            SQL = "INSERT INTO result(name, result)"
+                    + "VALUES('Vinicius',1)";
+            }
+            
         }catch (Exception ex){
             exceptionMessage = step + ": " + ex;
         }
