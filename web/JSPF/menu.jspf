@@ -1,0 +1,50 @@
+<%-- 
+    Document   : menu
+    Created on : 17/06/2020, 21:52:08
+    Author     : MarcosPauloRMM
+--%>
+
+
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<nav class="navbar navbar-expand-md navbar-bg">
+    <!-- Brand -->
+    <a class="navbar-brand" href="home.jsp">Web Quiz</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/MarcosPauloRMM/WebQuiz">Github</a>
+            </li>    
+            <% 
+                if (logged != null) {
+                    %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.jsp">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.jsp">Sair</a>
+                        </li>
+                    <%
+                }
+                else {
+                    %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.jsp">Entrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="signup.jsp">Cadastrar-se</a>
+                        </li>
+                    <%
+                }
+
+            %>
+        </ul>
+    </div> 
+</nav>

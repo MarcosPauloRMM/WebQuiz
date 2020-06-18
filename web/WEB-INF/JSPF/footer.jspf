@@ -1,0 +1,44 @@
+<%-- 
+    Document   : footer
+    Created on : 17/06/2020, 21:51:03
+    Author     : MarcosPauloRMM
+--%>
+
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<footer class="bg-dark py-3 mt-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center text-white pb-2">
+                <p class="h3 text-center">Equipe GitHub</p>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter">
+                Quem somos?
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title " id="exampleModalCenterTitle">
+                                <a class="color-modal" href="https://github.com/MarcosPauloRMM/WebQuiz" target="_blank">Perfis da Equipe no GitHub</a>
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="h5">
+                                <a href="https://github.com/MarcosPauloRMM" target="_blank">Marcos Paulo da Rocha Moura Miúdo</a> <br>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
