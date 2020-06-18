@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import web.DbListener;
 
 /**
@@ -18,9 +19,17 @@ import web.DbListener;
  * @author MarcosPauloRMM
  */
 public class User {
+    
+    
+
+    public User(String login, String name, String result) {
+        this.login = login;
+        this.name = name;
+        this.result = result;
+    }
     private String login;
     private String name;
-    
+    private String result;
     
     //CRIANDO METODO PARA PEGAR USUARIOS
     public static ArrayList<User> getUsers() throws Exception{
@@ -31,8 +40,9 @@ public class User {
         ResultSet rs = stmt.executeQuery("SELECT * FROM users");
         while(rs.next()){
             list.add(new User(
-                    rs.getString("login"), 
-                    rs.getString("name")));
+                    rs.getString("name"),
+                    rs.getString("login"),
+                    rs.getString("result")));
         }
         rs.close();
         stmt.close();
@@ -51,8 +61,9 @@ public class User {
         ResultSet rs = stmt.executeQuery();
         if(rs.next()){
             user = new User(
-                    rs.getString("login"), 
-                    rs.getString("name"));
+                    rs.getString("name"),
+                    rs.getString("login"),
+                    rs.getString("result"));
         }else{
             
         }
@@ -61,24 +72,13 @@ public class User {
         con.close();
         return user;
     }
-    
-    //CRIANDO METODO PARA CRIAR USUARIOS
-    public static void addUser(String login, String name,String password) throws Exception{
-        Class.forName("org.sqlite.JDBC");
-        Connection con = DriverManager.getConnection(DbListener.URL);
-        String SQL = "INSERT INTO users(login, name, password_hash) VALUES(?,?,?)";
-        PreparedStatement stmt = con.prepareStatement(SQL);
-        stmt.setString(1, login);
-        stmt.setString(2, name);
-        stmt.setLong(3, password.hashCode());
-        stmt.execute();
-        stmt.close();
-        con.close();
+
+    public String getLogin() {
+        return login;
     }
 
-    public User(String login, String name) {
+    public void setLogin(String login) {
         this.login = login;
-        this.name = name;
     }
 
     public String getName() {
@@ -89,12 +89,12 @@ public class User {
         this.name = name;
     }
 
-    public String getLogin() {
-        return login;
+    public String getResult() {
+        return result;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setResult(String result) {
+        this.result = result;
     }
 
 }

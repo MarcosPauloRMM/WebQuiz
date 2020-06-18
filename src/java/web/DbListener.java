@@ -2,7 +2,7 @@ package web;
 
 
 import db.Question;
-import db.Result;
+import db.Attempt;
 import db.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -34,21 +34,19 @@ public class DbListener implements ServletContextListener {
             //CRIANDO TABELA DE USUARIOS
             step = "users Table creation";
             
-            //POPULANDO CASO NÂO HAJA NENHUM REGISTRO
             SQL = "CREATE TABLE IF NOT EXISTS users("
                     + "name VARCHAR(200) NOT NULL,"
                     + "login VARCHAR(50) UNIQUE NOT NULL,"
                     + "password_hash LONG,"
-                    + "password_hash LONG,"
+                    + "media NUMBER NOT NULL"
                     + ")";
             stmt.executeUpdate(SQL);
             
-            //CRIANDO TABELA USERS PARA ARMAZENAr USUARIOS
             step = "Default users creation";
             if (User.getUsers().isEmpty()){
                 //CRIANDO USUARIOS
-                SQL = "INSERT INTO users(name, login, password_hash) "
-                    + "VALUES('Marcos Paulo da Rocha Moura', 'Marcos Paulo', '"+("123456".hashCode())+"')";
+                SQL = "INSERT INTO users(name, login, password_hash, media) "
+                    + "VALUES('Marcos Paulo da Rocha Moura', 'Marcos Paulo', '"+("123456".hashCode())+"', 10)";
                 stmt.executeUpdate(SQL);  
             }
             
@@ -98,40 +96,24 @@ public class DbListener implements ServletContextListener {
                 stmt.executeUpdate(SQL);
             }
             
-            /*CRIANDO TABELA RESULTS PARA ARMAZENAR RESULTADOS
-            step = "result Table creation";
-            SQL = "CREATE TABLE IF NOT EXISTS results("
-                    + "name VARCHAR(250) PRIMARY KEY,"
-                    + "result NUMBER(10) NOT NULL"
-                    +")";
-            stmt.executeUpdate(SQL);
-             
-            //CRIANDO RESULTADOS
-            step = "Default results creation";
-            if (Result.getResults().isEmpty()){
             
-            SQL = "INSERT INTO result(name, result)"
-                    + "VALUES('Marcos',10)";
-            SQL = "INSERT INTO result(name, result)"
-                    + "VALUES('Nicolas',9)";
-            SQL = "INSERT INTO result(name, result)"
-                    + "VALUES('João Vinicius',8)";
-            SQL = "INSERT INTO result(name, result)"
-                    + "VALUES('João Vitor',7)";
-            SQL = "INSERT INTO result(name, result)"
-                    + "VALUES('Evelyn',6)";
-            SQL = "INSERT INTO result(name, result)"
-                    + "VALUES('Fernanda',5)";
-            SQL = "INSERT INTO result(name, result)"
-                    + "VALUES('Mari',4)";
-            SQL = "INSERT INTO result(name, result)"
-                    + "VALUES('Guilherme',3)";
-            SQL = "INSERT INTO result(name, result)"
-                    + "VALUES('Kauã',2)";
-            SQL = "INSERT INTO result(name, result)"
-                    + "VALUES('Vinicius',1)";
+            //CRIANDO TABELA DE USUARIOS
+            step = "attempt Table creation";
+            
+            SQL = "CREATE TABLE IF NOT EXISTS attempt("
+                    + "login VARCHAR(200) NOT NULL,"
+                    + "result NUMBER NOT NULL"
+                    + "date DATE NOT NULL" 
+                    + ")";
+            stmt.executeUpdate(SQL);
+            
+            step = "Default users creation";
+            if (User.getUsers().isEmpty()){
+                //CRIANDO USUARIOS
+                SQL = "INSERT INTO users(name, login, password_hash, media) "
+                    + "VALUES('Marcos Paulo', '10', 2020-06-18)";
+                stmt.executeUpdate(SQL);  
             }
-            */
         }catch (Exception ex){
             exceptionMessage = step + ": " + ex;
         }

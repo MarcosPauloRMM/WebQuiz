@@ -23,12 +23,10 @@
             
             
                
-            <!--li class="nav-item">
-                <a class="nav-link" href="https://github.com/MarcosPauloRMM/WebQuiz">Github</a>
-            </li-->
             <li class="nav-item">
-                            <a class="nav-link" href="hallofchampions.jsp">Campeões</a>
+                <a class="nav-link" href="https://github.com/MarcosPauloRMM/WebQuiz">Repositório Github</a>
             </li>
+            
             <% //VALIDAÇÂO PARA SE ESTIVER LOGAO EXPANDIR O MENU
                 if (logged != null) {
                     %>

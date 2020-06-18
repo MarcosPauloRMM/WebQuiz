@@ -1,15 +1,15 @@
 <%-- 
     Document   : ranking
     Created on : 09/11/2018, 23:35:37
-    Author     : mateus
+    Author     : MarcosPauloRMM
 --%>
 
 <%@page import="db.User"%>
-<%@page import="db.Historic"%>
+<%@page import="db.Attempt"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<h2  class="text-center">Ranking</h2>
+<h2  class="text-center">Lista de Campeões</h2>
 <table class="table table-striped mt-2">
     <thead>
         <tr>
@@ -22,7 +22,7 @@
         <%
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
             int rankCount = 0;
-            for (Historic h : Historic.sortByResult(Historic.getHistoric())) {
+            for (Attempt h : Attempt.sortByResult(Attempt.getAttempts())) {
                 if (rankCount <= 9) {
         %>
         <tr>
