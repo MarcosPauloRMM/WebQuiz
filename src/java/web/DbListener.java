@@ -16,7 +16,7 @@ import javax.servlet.ServletContextListener;
  * @author @author MarcosPauloRMM
  */
 public class DbListener implements ServletContextListener {
-    public static final String URL = "jdbc:sqlite:webquiz.db";
+    public static final String URL = "jdbc:sqlite:c:/webquiz.db";
     public static String exceptionMessage = null;
     
     @Override

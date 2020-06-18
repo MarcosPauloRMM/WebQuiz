@@ -7,6 +7,7 @@
 
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
+
 <nav class="navbar navbar-expand-md navbar-bg">
     <!-- Brand -->
     <a class="navbar-brand" href="home.jsp">Web Quiz</a>
@@ -19,12 +20,21 @@
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            
+            
+               
+            <!--li class="nav-item">
                 <a class="nav-link" href="https://github.com/MarcosPauloRMM/WebQuiz">Github</a>
-            </li>    
-            <% 
+            </li-->
+            <li class="nav-item">
+                            <a class="nav-link" href="hallofchampions.jsp">Campeões</a>
+            </li>
+            <% //VALIDAÇÂO PARA SE ESTIVER LOGAO EXPANDIR O MENU
                 if (logged != null) {
                     %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="last.jsp">Ultimas Tentativas</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="profile.jsp">Perfil</a>
                         </li>
