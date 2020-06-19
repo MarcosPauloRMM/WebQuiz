@@ -35,7 +35,7 @@ public class User {
     public static ArrayList<User> getUsers() throws Exception{
         ArrayList<User> list = new ArrayList<>();
         Class.forName("org.sqlite.JDBC");
-        Connection con = DriverManager.getConnection(DbListener.URL);
+        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM users");
         while(rs.next()){
@@ -53,7 +53,7 @@ public class User {
     public static User getUser(String login, String password) throws Exception{
         User user = null;
         Class.forName("org.sqlite.JDBC");
-        Connection con = DriverManager.getConnection(DbListener.URL);
+        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
         String SQL = "SELECT * FROM users WHERE login=? AND password_hash=?";
         PreparedStatement stmt = con.prepareStatement(SQL);
         stmt.setString(1, login);
@@ -64,15 +64,39 @@ public class User {
                     rs.getString("name"),
                     rs.getString("login"),
                     rs.getString("result"));
-        }else{
-            
+        }else{   
         }
         rs.close();
         stmt.close();
         con.close();
         return user;
     }
-
+    
+    public static User login(String login, String password) throws Exception {
+        User output = null;
+        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
+        String SQL = "SELECT * FROM users WHERE login=? AND password_hash=?";
+        PreparedStatement stmt = con.prepareStatement(SQL);
+        stmt.setString(1, login);
+        stmt.setLong(2, password.hashCode());
+        ResultSet rs = stmt.executeQuery();
+        if(rs.next()){
+            output = new User(
+                    rs.getString("login"), 
+                    rs.getString("password"),
+                    rs.getString("result")
+            );
+        }else{
+            output = null;
+        }
+        rs.close();
+        stmt.close();
+        con.close();
+        return output;
+    
+    
+    
+    }
     public String getLogin() {
         return login;
     }

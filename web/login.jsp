@@ -6,8 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page import="web.DbListener"%>
 <%@page import="db.User"%>
+<%@page import="web.DbListener"%>
 <%@include file="WEB-INF/JSPF/logged.jspf" %>
 <%    if (logged != null) {
         response.sendRedirect("profile.jsp");
@@ -52,9 +52,9 @@
             <%if(session.getAttribute("user.login") == null){%>
                 <form method="post">
                     <div class="form-group">
-                        <input class="form-control mb-3" type="text" id="user" name="user.login" placeholder="Username" required>
+                        <input class="form-control mb-3" type="text" id="user" name="user.login" placeholder="Login" required>
                         <input class="form-control mb-3" type="password" id="user" name="user.password" placeholder="Password" required>
-                        <button type="submit" class="btn btn-login">Login</button>                
+                        <button type="submit" class="btn btn-login" name="session.login" value="Log in">Login</button>               
                     </div>  
                 </form>
                 <%if(errorMessage != null){%>
