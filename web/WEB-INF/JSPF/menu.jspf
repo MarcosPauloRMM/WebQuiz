@@ -31,9 +31,6 @@
                 if (logged != null) {
                     %>
                         <li class="nav-item">
-                            <a class="nav-link" href="last.jsp">Ultimas Tentativas</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="profile.jsp">Perfil</a>
                         </li>
                         <li class="nav-item">

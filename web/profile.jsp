@@ -39,11 +39,17 @@
                         <thead>
                             <tr>
                                 <th>Nome:</th>
-                                <th>Nota</th>
-                                <th>Data</th>
+                                <th>Nota:</th>
+                                <th>Data:</th>
                             </tr>
                         </thead>
-                        <tbody>                            
+                        <tbody>
+                            <tr>
+                                <td><%session.getAttribute("attempt.login");%></td>
+                                <td><%session.getAttribute("attempt.result");%></td>
+                                <td><%session.getAttribute("attempt.daate");%></td>
+                            </tr>
+                        </tbody>                          
                     </table>
                 </div>
                 <div class="col-6">
