@@ -9,7 +9,8 @@
 <%@page import="db.User"%>
 <%@page import="web.DbListener"%>
 <%@include file="WEB-INF/JSPF/logged.jspf" %>
-<%    if (logged != null) {
+<%    
+    if (logged != null) {
         response.sendRedirect("profile.jsp");
     }
 
@@ -31,14 +32,16 @@
             if(request.getParameter("session.login") != null){
                 String login = request.getParameter("user.login");
                 String password = request.getParameter("user.password");
+                response.sendRedirect("profile.jsp");
+                
+                
                 try{
                     User user = User.getUser(login, password);
                     if(user == null){
-                        errorMessage = "Login/password incorrect";
+                        errorMessage = "Login ou Senha incorreta ;-;";
                     }else{
                         session.setAttribute("user.login", login);
                         session.setAttribute("user.name", user.getName());
-                        response.sendRedirect(request.getRequestURI());
                     }
                 }catch(Exception ex){
                     errorMessage = ex.getMessage();
@@ -46,7 +49,6 @@
             }else if(request.getParameter("session.logout") != null){
                 session.removeAttribute("user.login");
                 session.removeAttribute("user.name");
-                response.sendRedirect(request.getRequestURI());
             }
             %>
             <%if(session.getAttribute("user.login") == null){%>

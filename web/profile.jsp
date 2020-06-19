@@ -27,7 +27,6 @@
         <%@ include file="WEB-INF/JSPF/menu.jspf" %>
 
         <div class="jumbotron text-center">
-
             <h1>Bem Vindo, <%= logged%></h1>
         </div>
         <div class="container mt-5">
@@ -39,7 +38,7 @@
                     <table class="table table-striped mt-2">
                         <thead>
                             <tr>
-                                <th>Nome</th>
+                                <th>Nome:</th>
                                 <th>Nota</th>
                                 <th>Data</th>
                             </tr>

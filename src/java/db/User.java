@@ -22,14 +22,12 @@ public class User {
     
     
 
-    public User(String login, String name, String result) {
+    public User(String login, String name) {
         this.login = login;
         this.name = name;
-        this.result = result;
     }
     private String login;
     private String name;
-    private String result;
     
     //CRIANDO METODO PARA PEGAR USUARIOS
     public static ArrayList<User> getUsers() throws Exception{
@@ -41,8 +39,7 @@ public class User {
         while(rs.next()){
             list.add(new User(
                     rs.getString("name"),
-                    rs.getString("login"),
-                    rs.getString("result")));
+                    rs.getString("login")));
         }
         rs.close();
         stmt.close();
@@ -54,7 +51,7 @@ public class User {
         User user = null;
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
-        String SQL = "SELECT * FROM users WHERE login=? AND password_hash=?";
+        String SQL = "SELECT * FROM users WHERE login=? AND password=?";
         PreparedStatement stmt = con.prepareStatement(SQL);
         stmt.setString(1, login);
         stmt.setLong(2, password.hashCode());
@@ -62,8 +59,7 @@ public class User {
         if(rs.next()){
             user = new User(
                     rs.getString("name"),
-                    rs.getString("login"),
-                    rs.getString("result"));
+                    rs.getString("login"));
         }else{   
         }
         rs.close();
@@ -75,7 +71,7 @@ public class User {
     public static User login(String login, String password) throws Exception {
         User output = null;
         Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
-        String SQL = "SELECT * FROM users WHERE login=? AND password_hash=?";
+        String SQL = "SELECT * FROM users WHERE login=? AND password=?";
         PreparedStatement stmt = con.prepareStatement(SQL);
         stmt.setString(1, login);
         stmt.setLong(2, password.hashCode());
@@ -83,9 +79,7 @@ public class User {
         if(rs.next()){
             output = new User(
                     rs.getString("login"), 
-                    rs.getString("password"),
-                    rs.getString("result")
-            );
+                    rs.getString("password"));
         }else{
             output = null;
         }
@@ -113,12 +107,5 @@ public class User {
         this.name = name;
     }
 
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
 
 }
