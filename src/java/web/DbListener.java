@@ -41,6 +41,8 @@ import javax.servlet.ServletContextListener;
                 //CRIANDO USUARIOS
                 stmt.executeUpdate("INSERT INTO users(name, login, password)"
                     + "VALUES('Marcos Paulo da Rocha Moura', 'Marcos Paulo', '"+("123456".hashCode())+"')");  
+                stmt.executeUpdate("INSERT INTO users(name, login, password)"
+                    + "VALUES('Ricardo Pupo Larguesa', 'Ricardo', '"+("123456".hashCode())+"')");  
                 }
             
             
@@ -58,10 +60,14 @@ import javax.servlet.ServletContextListener;
             //CRIANDO PERGUNTAS E RESPOSTAS
             step = "Default questions creation";
             if (Question.getQuestions().isEmpty()){
+               stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3)"
+                    + "VALUES('Em que ano aconteceu a revolução Francesa?', '1789', '1788', '1790', '1791')"); 
+                           
+
+               
                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Em que ano aconteceu a revolução Francesa?', '1789', '1788', '1790', '1791')");                
-               stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Descreve-se como Guerra do Peloponeso o conflito armado entre:','Esparta x Atena',Atenas x Roma','Roma x Egito','Egito x Esparta')");
+                    + "VALUES('Descreve-se como Guerra do Peloponeso o conflito armado entre:','Esparta x Atena','Atenas x Roma','Roma x Egito','Egito x Esparta')");
+               
                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
                     + "VALUES('Em que ano se iniciou a 2° Guerra Mundial?', '1939', '1940', '1942', '1941',)");
                 stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
@@ -84,19 +90,14 @@ import javax.servlet.ServletContextListener;
             
             //CRIANDO TABELA DE USUARIOS
             step = "attempt Table creation";
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS attempt("
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS attempt ("
                     + "login VARCHAR(200) NOT NULL,"
                     + "result NUMBER NOT NULL,"
                     + "date DATE NOT NULL," 
                     + "FOREIGN KEY(login) REFERENCES users(login))");
             
-            step = "Default users creation";
-            if (User.getUsers().isEmpty()){
-                //CRIANDO USUARIOS
-                stmt.executeUpdate("INSERT INTO users(login, media, date) "
-                    + "VALUES('Marcos Paulo', '10', 2020-06-18)");  
-                }
-            //CRIANDO TABELA DE USUARIOS
+            
+            //CRIANDO TABELA DE TENTATIVAS
             step = "attempt Table creation";
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS attempt("
                     + "login VARCHAR(200) NOT NULL,"
@@ -105,10 +106,10 @@ import javax.servlet.ServletContextListener;
                     + "FOREIGN KEY(login) REFERENCES users(login)"
                     + ")");
             
-            step = "Default users creation";
+            step = "Default attempt creation";
             if (User.getUsers().isEmpty()){
                 //CRIANDO USUARIOS
-                stmt.executeUpdate("INSERT INTO users(login, media, date) "
+                stmt.executeUpdate("INSERT INTO attempt(login, media, date) "
                     + "VALUES('Marcos Paulo', '10', 2020-06-18)");  
                 }
             
