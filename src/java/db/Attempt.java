@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import web.DbListener;
 
 /**
@@ -22,7 +21,6 @@ public class Attempt {
 
     private String name;
     private double result;
-    private Date date;
 
     //MÉTODO PARA PEGAR UMA TENTATIVA
     public static ArrayList<Attempt> getAttempts() throws Exception{
@@ -32,10 +30,9 @@ public class Attempt {
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM attempt");
         while(rs.next()){
-            list.add(new Attempt(
-                    rs.getString("result"), 
-                    rs.getDouble("result"), 
-                    rs.getDate("date")));
+            list.add(new Attempt( 
+                    rs.getString("login"),
+                    rs.getDouble("result")));
         }
         rs.close();
         stmt.close();
@@ -44,23 +41,21 @@ public class Attempt {
     }
     
     //CRIANDO METODO PARA CRIAR UMA TENTATIVA
-    public static void addAttempts(String name, double result, Date date) throws Exception{
+    public static void addAttempts(String name, double result) throws Exception{
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
         String SQL = "INSERT INTO users(name, result) VALUES(?,?)";
         PreparedStatement stmt = con.prepareStatement(SQL);
         stmt.setString(1, name);
         stmt.setDouble(2, result);
-        stmt.setDate(3, (java.sql.Date) date);
         stmt.execute();
         stmt.close();
         con.close(); 
     }
     
-    public Attempt(String name, double result, Date date) {
+    public Attempt(String name, double result) {
         this.name = name;
         this.result = result;
-        this.date = date;
     }
     
     public String getName() {
@@ -77,13 +72,5 @@ public class Attempt {
 
     public void setResult(double result) {
         this.result = result;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 }

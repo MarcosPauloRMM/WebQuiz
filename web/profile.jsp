@@ -34,20 +34,16 @@
             <div class="row mt-5">
 
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                    <h2 class="text-center">Seus Últimos Testes</h2>
+                    <h2   class="text-center">Suas ultimas notas:</h2>
                     <table class="table table-striped mt-2">
                         <thead>
                             <tr>
-                                <th>Nome:</th>
-                                <th>Nota:</th>
-                                <th>Data:</th>
+                                <th style='text-align:center'>Nota:</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><%session.getAttribute("attempt.login");%></td>
-                                <td><%session.getAttribute("attempt.result");%></td>
-                                <td><%session.getAttribute("attempt.daate");%></td>
+                                <td style='text-align:center'><%=session.getAttribute("login")%></td>
                             </tr>
                         </tbody>                          
                     </table>

@@ -1,4 +1,5 @@
 package web;
+import db.Attempt;
 import db.Question;
 import db.User;
 import java.sql.Connection;
@@ -62,22 +63,20 @@ import javax.servlet.ServletContextListener;
             if (Question.getQuestions().isEmpty()){
                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3)"
                     + "VALUES('Em que ano aconteceu a revolução Francesa?', '1789', '1788', '1790', '1791')"); 
-                           
-
-               
+                          
                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
                     + "VALUES('Descreve-se como Guerra do Peloponeso o conflito armado entre:','Esparta x Atena','Atenas x Roma','Roma x Egito','Egito x Esparta')");
                
                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Em que ano se iniciou a 2° Guerra Mundial?', '1939', '1940', '1942', '1941',)");
+                    + "VALUES('Em que ano se iniciou a 2° Guerra Mundial?', '1939', '1940', '1942', '1941')");
                 stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
                     + "VALUES('Em 1054 houve um evento chamado a Cisma do Oriente o qual dividiu o imperio romano em dois, quais são os nomes originais dessas duas partes?', 'Bizantino e Romano', 'Equatorial e Polar','Sul e Norte','Catolico e Ortodoxo')");
                 stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
                     + "VALUES('Quais desses não foi um imperador de Roma?', 'Marco', 'Cômodo', 'Trajano', 'Vespasiano')");
                 stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('Quantos anos durou a guerra dos cem anos?', '116', '103', '98', '32',)");
+                    + "VALUES('Quantos anos durou a guerra dos cem anos?', '116', '103', '98', '32')");
                 stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
-                    + "VALUES('A pré-história está dividida em três periodos, ordenados cronologicamente são:', 'Paleolítico, Neolítico e Idade da Pedra Polida', 'Neolítico, Palolítico e Idade da Pedra Polida', 'Idade da Pedra Polida, Neolitico e Paleolitico', 'Idade da Pedra Polida, Paleolitico e Neolitico')");          stmt.executeUpdate(SQL);
+                    + "VALUES('A pré-história está dividida em três periodos, ordenados cronologicamente são:', 'Paleolítico, Neolítico e Idade da Pedra Polida', 'Neolítico, Palolítico e Idade da Pedra Polida', 'Idade da Pedra Polida, Neolitico e Paleolitico', 'Idade da Pedra Polida, Paleolitico e Neolitico')");
                 stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
                     + "VALUES('O que significa URRS','União das Republicas Socialistas Soviéticas','União das Republicas Soviéticas Socialistas','União Republicana Soviética e Socialista','União Republicana Socialista e Soviética')");
                 stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
@@ -88,29 +87,21 @@ import javax.servlet.ServletContextListener;
             
             }
             
-            //CRIANDO TABELA DE USUARIOS
-            step = "attempt Table creation";
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS attempt ("
-                    + "login VARCHAR(200) NOT NULL,"
-                    + "result NUMBER NOT NULL,"
-                    + "date DATE NOT NULL," 
-                    + "FOREIGN KEY(login) REFERENCES users(login))");
-            
+
             
             //CRIANDO TABELA DE TENTATIVAS
             step = "attempt Table creation";
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS attempt("
                     + "login VARCHAR(200) NOT NULL,"
-                    + "result NUMBER NOT NULL,"
-                    + "date DATE NOT NULL," 
+                    + "result NUMBER NOT NULL," 
                     + "FOREIGN KEY(login) REFERENCES users(login)"
                     + ")");
             
             step = "Default attempt creation";
-            if (User.getUsers().isEmpty()){
+            if (Attempt.getAttempts().isEmpty()){
                 //CRIANDO USUARIOS
-                stmt.executeUpdate("INSERT INTO attempt(login, media, date) "
-                    + "VALUES('Marcos Paulo', '10', 2020-06-18)");  
+                stmt.executeUpdate("INSERT INTO attempt(login, result) "
+                    + "VALUES('Marcos Paulo', '10')");  
                 }
             
             
