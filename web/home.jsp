@@ -32,16 +32,16 @@
         <hr>
         <div class="container">
             <div class="row mt-2">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4" style='text-align:center'>
-                <%--@ include file="WEB-INF/JSPF/lastattempts.jspf"--%>
-            </div>
 
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4 "style='text-align:center'>
-                <%--@ include file="WEB-INF/JSPF/ranking.jspf"--%>
-            </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
+                    <%@ include file="WEB-INF/JSPF/lastattempts.jspf" %>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
+                    <%@ include file="WEB-INF/JSPF/ranking.jspf" %>
+                </div>
             </div>
         </div>
-
         <%@ include file="WEB-INF/JSPF/footer.jspf" %>
     </body>
 </html>

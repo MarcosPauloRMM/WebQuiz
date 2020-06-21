@@ -1,11 +1,8 @@
-<%-- 
     Document   : ranking
-    Created on : 09/11/2018, 23:35:37
-    Author     : mateus
---%>
+    Created on : 21/06/2020, 14:22:08
+    Author     : MarcosPauloRMM
 
-<%@page import="db.User"%>
-<%@page import="db.Historic"%>
+
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,27 +12,10 @@
         <tr>
             <th>Nome</th>
             <th>Nota</th>
-            <th>Data</th>
         </tr>
     </thead>
     <tbody>
-        <%
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
-            int rankCount = 0;
-            for (Historic h : Historic.sortByResult(Historic.getHistoric())) {
-                if (rankCount <= 9) {
-        %>
-        <tr>
-            <td><%= h.getUser()%></td>
-            <td><%= h.getResult()%></td>
-            <td><%= df.format(h.getDate())%></td>
-        </tr>
-        <%
-            }
-            rankCount++;
-        %>
-
-        <% }%>
+   
     </tbody>
 
 </table>

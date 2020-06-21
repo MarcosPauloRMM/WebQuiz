@@ -22,7 +22,9 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title " id="exampleModalCenterTitle">
-                                <a class="color-modal" href="https://github.com/MarcosPauloRMM/WebQuiz" target="_blank">Perfis da Equipe no GitHub</a>
+                                <a class="color-modal">O projeto a seguir é referente a uma proposta da aula de Programação Orientada a Objeto ministrada pelo professor Ricardo Pupo Larguesa na FATEC PG</a>
+                                <br><br><a class="color-modal">Objetivo: Criar um projeto de aplicação WEB de um Quiz de 10 perguntas aleatórias com controle de sessão.</a>
+                                <br><br><a class="color-modal">Integrantes:</a>
                             </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>

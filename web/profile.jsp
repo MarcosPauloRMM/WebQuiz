@@ -4,10 +4,8 @@
     Author     : MarcosPauloRMM
 --%>
 
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="db.User"%>
+
 <%@page import="db.Attempt"%>
-<%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="WEB-INF/JSPF/logged.jspf" %>
 <%  if (logged == null) {
@@ -23,11 +21,11 @@
         <title>Perfil do Usuário</title>
     </head>
     <body>
-
+s
         <%@ include file="WEB-INF/JSPF/menu.jspf" %>
 
         <div class="jumbotron text-center">
-            <h1>Bem Vindo, <%= logged%></h1>
+            <h1>Bem Vindo, <%=logged%></h1>
         </div>
         <div class="container mt-5">
 
@@ -41,15 +39,16 @@
                                 <th style='text-align:center'>Nota:</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td style='text-align:center'><%=session.getAttribute("login")%></td>
-                            </tr>
-                        </tbody>                          
+                            <%@ include file="WEB-INF/JSPF/myattempts.jspf" %>                     
                     </table>
                 </div>
                 <div class="col-6">
-                    <h2 class="text-center">Sua Média</h2>            
+                    <h2 class="text-center">Sua Média
+                        <br>
+                        <br>
+                        <br>
+  
+                    </h2>
                 </div>
                 <a href="quiz.jsp" class="btn btn-quiz">Realizar Quiz</a>
             </div>

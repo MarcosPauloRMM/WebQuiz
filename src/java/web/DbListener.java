@@ -84,27 +84,65 @@ import javax.servlet.ServletContextListener;
                 stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
                     + "VALUES('Quantos presidentes tivemso até 2020?', '38', '40', '66', '39')");
             
-            
-            }
-            
-
-            
-            //CRIANDO TABELA DE TENTATIVAS
-            step = "attempt Table creation";
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS attempt("
+              //CRIANDO TABELA DE TENTATIVAS
+            step = "attempts Table creation";
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS attempts("
                     + "login VARCHAR(200) NOT NULL,"
                     + "result NUMBER NOT NULL," 
                     + "FOREIGN KEY(login) REFERENCES users(login)"
                     + ")");
             
-            step = "Default attempt creation";
+            step = "Default attempts creation";
             if (Attempt.getAttempts().isEmpty()){
                 //CRIANDO USUARIOS
-                stmt.executeUpdate("INSERT INTO attempt(login, result) "
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
                     + "VALUES('Marcos Paulo', '10')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Ricardo', '9')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Marcos Paulo', '8')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Ricardo', '7')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Marcos Paulo', '6')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Ricardo', '5')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Marcos Paulo', '4')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Ricardo', '3')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Marcos Paulo', '2')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Ricardo', '1')");   
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Ricardo', '10')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Marcos Paulo', '9')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Ricardo', '8')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Marcos Paulo', '7')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Ricardo', '6')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Marcos Paulo', '5')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Ricardo', '4')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Marcos Paulo', '3')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Ricardo', '2')");  
+                stmt.executeUpdate("INSERT INTO attempts(login, result) "
+                    + "VALUES('Marcos Paulo', '1')");  
                 }
             
             
+            }
+            
+
+            
+          
             stmt.close();
             con.close();
         }catch(Exception ex){
