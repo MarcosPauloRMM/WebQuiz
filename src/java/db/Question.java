@@ -35,16 +35,16 @@ public class Question {
         ResultSet rs = stmt.executeQuery("SELECT * FROM questions order by rowid");
         while(rs.next()){
             list.add(new Question(
-                    rs.getString("description"),
-                    
-                            rs.getString("answer1"),
-                            rs.getString("answer2"),
-                            rs.getString("answer3"),
-                            rs.getString("answer4")));
+                rs.getString("description"),
+                    rs.getString("answer1"),
+                    rs.getString("answer2"),
+                    rs.getString("answer3"),
+                    rs.getString("answer4")));
         }
         rs.close();
         stmt.close();
         con.close();
+        Collections.shuffle(list);
         return list;
     }
    
