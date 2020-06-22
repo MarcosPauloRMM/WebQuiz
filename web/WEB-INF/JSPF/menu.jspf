@@ -26,8 +26,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="https://github.com/MarcosPauloRMM/WebQuiz">Repositório Github</a>
             </li>
-            
-            <% //VALIDAÇÂO PARA SE ESTIVER LOGAO EXPANDIR O MENU
+
+            <% //VALIDAÇÂO PARA SE ESTIVER LOGADO EXPANDIR O MENU
                 if (logged != null) {
                     %>
                         <li class="nav-item">
@@ -44,7 +44,7 @@
                             <a class="nav-link" href="login.jsp">Entrar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="signup.jsp">Cadastrar-se</a>
+                            <a class="nav-link" href="sigin.jsp">Cadastrar-se</a>
                         </li>
                     <%
                 }

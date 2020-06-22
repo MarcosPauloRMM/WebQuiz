@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import web.DbListener;
 
 /**
@@ -19,10 +20,10 @@ import web.DbListener;
 public class Question {
  
    private String description;
-   private String answer;
-   private String answerwrong1;
-   private String answerwrong2;
-   private String answerwrong3;
+   private String answer1;
+   private String answer2;
+   private String answer3;
+   private String answer4;
 
    
    //CRIANDO METODO PARA PEGAR QEUSTÔES
@@ -31,14 +32,15 @@ public class Question {
         Class.forName("org.sqlite.JDBC");
         Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM questions");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM questions order by rowid");
         while(rs.next()){
             list.add(new Question(
-                    rs.getString("description"), 
-                    rs.getString("answer"), 
-                    rs.getString("answerwrong1"), 
-                    rs.getString("answerwrong2"), 
-                    rs.getString("answerwrong3")));
+                    rs.getString("description"),
+                    
+                            rs.getString("answer1"),
+                            rs.getString("answer2"),
+                            rs.getString("answer3"),
+                            rs.getString("answer4")));
         }
         rs.close();
         stmt.close();
@@ -49,12 +51,12 @@ public class Question {
    
    
    
-    public Question(String description, String answer, String answerwrong1, String answerwrong2, String answerwrong3) {
+    public Question(String description, String answer1, String answer2, String answer3, String answer4) {
         this.description = description;
-        this.answer = answer;
-        this.answerwrong1 = answerwrong1;
-        this.answerwrong2 = answerwrong2;
-        this.answerwrong3 = answerwrong3;
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.answer3 = answer3;
+        this.answer4 = answer4;
     }
     
     public String getDescription() {
@@ -65,36 +67,36 @@ public class Question {
         this.description = description;
     }
 
-    public String getAnswer() {
-        return answer;
+    public String getAnswer1() {
+        return answer1;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setAnswer1(String answer1) {
+        this.answer1 = answer1;
     }
 
-    public String getAnswerwrong1() {
-        return answerwrong1;
+    public String getAnswer2() {
+        return answer2;
     }
 
-    public void setAnswerwrong1(String answerwrong1) {
-        this.answerwrong1 = answerwrong1;
+    public void setAnswer2(String answer2) {
+        this.answer2 = answer2;
     }
 
-    public String getAnswerwrong2() {
-        return answerwrong2;
+    public String getAnswer3() {
+        return answer3;
     }
 
-    public void setAnswerwrong2(String answerwrong2) {
-        this.answerwrong2 = answerwrong2;
+    public void setAnswer3(String answer3) {
+        this.answer3 = answer3;
     }
 
-    public String getAnswerwrong3() {
-        return answerwrong3;
+    public String getAnswer4() {
+        return answer4;
     }
 
-    public void setAnswerwrong3(String answerwrong3) {
-        this.answerwrong3 = answerwrong3;
+    public void setAnswer4(String answer4) {
+        this.answer4 = answer4;
     }
     
     }

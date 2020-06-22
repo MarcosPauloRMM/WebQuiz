@@ -51,37 +51,35 @@ import javax.servlet.ServletContextListener;
             //CRIANDO TABELA QUESTIONS PARA ARMAZENAR PERGUNTASE E RESPOSTAS
             step = "Table 'questions' questions";
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS questions("
-                    + "description VARCHAR(250) PRIMARY KEY,"
-                    + "answer VARCHAR(250) NOT NULL,"
-                    + "answerwrong1 VARCHAR(250) NOT NULL,"
-                    + "answerwrong2 VARCHAR(250) NOT NULL,"
-                    + "answerwrong3 VARCHAR(250) NOT NULL"
+                    + "description VARCHAR(500) PRIMARY KEY,"
+                    + "answer1 VARCHAR(500) NOT NULL,"
+                    + "answer2 VARCHAR(500) NOT NULL,"
+                    + "answer3 VARCHAR(500) NOT NULL,"
+                    + "answer4 VARCHAR(500) NOT NULL"
                     + ")");
             
             //CRIANDO PERGUNTAS E RESPOSTAS
             step = "Default questions creation";
             if (Question.getQuestions().isEmpty()){
-               stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3)"
+               stmt.executeUpdate("INSERT INTO questions(description, answer1, answer2, answer3, answer4)"
                     + "VALUES('Em que ano aconteceu a revolução Francesa?', '1789', '1788', '1790', '1791')"); 
-                          
-               stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
+               stmt.executeUpdate("INSERT INTO questions(description, answer1, answer2, answer3, answer4) "
                     + "VALUES('Descreve-se como Guerra do Peloponeso o conflito armado entre:','Esparta x Atena','Atenas x Roma','Roma x Egito','Egito x Esparta')");
-               
-               stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
+               stmt.executeUpdate("INSERT INTO questions(description, answer1, answer2, answer3, answer4) "
                     + "VALUES('Em que ano se iniciou a 2° Guerra Mundial?', '1939', '1940', '1942', '1941')");
-                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
+                stmt.executeUpdate("INSERT INTO questions(description, answer1, answer2, answer3, answer4) "
                     + "VALUES('Em 1054 houve um evento chamado a Cisma do Oriente o qual dividiu o imperio romano em dois, quais são os nomes originais dessas duas partes?', 'Bizantino e Romano', 'Equatorial e Polar','Sul e Norte','Catolico e Ortodoxo')");
-                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
+                stmt.executeUpdate("INSERT INTO questions(description, answer1, answer2, answer3, answer4) "
                     + "VALUES('Quais desses não foi um imperador de Roma?', 'Marco', 'Cômodo', 'Trajano', 'Vespasiano')");
-                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
+                stmt.executeUpdate("INSERT INTO questions(description, answer1, answer2, answer3, answer4) "
                     + "VALUES('Quantos anos durou a guerra dos cem anos?', '116', '103', '98', '32')");
-                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
+                stmt.executeUpdate("INSERT INTO questions(description, answer1, answer2, answer3, answer4) "
                     + "VALUES('A pré-história está dividida em três periodos, ordenados cronologicamente são:', 'Paleolítico, Neolítico e Idade da Pedra Polida', 'Neolítico, Palolítico e Idade da Pedra Polida', 'Idade da Pedra Polida, Neolitico e Paleolitico', 'Idade da Pedra Polida, Paleolitico e Neolitico')");
-                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
+                stmt.executeUpdate("INSERT INTO questions(description, answer1, answer2, answer3, answer4) "
                     + "VALUES('O que significa URRS','União das Republicas Socialistas Soviéticas','União das Republicas Soviéticas Socialistas','União Republicana Soviética e Socialista','União Republicana Socialista e Soviética')");
-                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
+                stmt.executeUpdate("INSERT INTO questions(description, answer1, answer2, answer3, answer4) "
                     + "VALUES('Quando foi criado o primeiro computador?', '1946', '1945', '1944', '1943')");
-                stmt.executeUpdate("INSERT INTO questions(description, answer, answerwrong1, answerwrong2, answerwrong3) "
+                stmt.executeUpdate("INSERT INTO questions(description, answer1, answer2, answer3, answer4) "
                     + "VALUES('Quantos presidentes tivemso até 2020?', '38', '40', '66', '39')");
             
               //CRIANDO TABELA DE TENTATIVAS

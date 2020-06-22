@@ -21,12 +21,14 @@ public class User {
     
     
 
+    
+    private String login;
+    private String name;
+    
     public User(String login, String name) {
         this.login = login;
         this.name = name;
     }
-    private String login;
-    private String name;
     
     //CRIANDO METODO PARA PEGAR USUARIOS
     public static ArrayList<User> getUsers() throws Exception{
@@ -67,6 +69,19 @@ public class User {
         return user;
     }
     
+    public static void addUser(String name, String login, String password) throws Exception{
+        Class.forName("org.sqlite.JDBC");
+        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
+        String SQL = "INSERT INTO users(name, login, password) VALUES(?,?,?)";
+        PreparedStatement stmt = con.prepareStatement(SQL);
+        stmt.setString(1, name);
+        stmt.setString(2, login);
+        stmt.setLong(3, password.hashCode());
+        stmt.execute();
+        stmt.close();
+        con.close();
+    }
+
     public static User login(String login, String password) throws Exception {
         User output = null;
         Connection con = DriverManager.getConnection(DbListener.jdbcUrl);

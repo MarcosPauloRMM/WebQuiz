@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="db.User"%>
 <%@page import="db.Attempt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="WEB-INF/JSPF/logged.jspf" %>
@@ -25,7 +26,7 @@ s
         <%@ include file="WEB-INF/JSPF/menu.jspf" %>
 
         <div class="jumbotron text-center">
-            <h1>Bem Vindo, <%=logged%></h1>
+            <h1>Bem Vindo, <%= session.getAttribute("user.login") %></h1>
         </div>
         <div class="container mt-5">
 
@@ -38,8 +39,7 @@ s
                             <tr>
                                 <th style='text-align:center'>Nota:</th>
                             </tr>
-                        </thead>
-                            <%@ include file="WEB-INF/JSPF/myattempts.jspf" %>                     
+                        </thead>                     
                     </table>
                 </div>
                 <div class="col-6">
@@ -47,7 +47,6 @@ s
                         <br>
                         <br>
                         <br>
-  
                     </h2>
                 </div>
                 <a href="quiz.jsp" class="btn btn-quiz">Realizar Quiz</a>

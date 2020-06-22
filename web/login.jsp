@@ -28,12 +28,11 @@
             <div class="login">
                 <h1 class="mb-3">Login</h1>
           <%
-           String errorMessage = null;
+            String errorMessage = null;
             if(request.getParameter("session.login") != null){
                 String login = request.getParameter("user.login");
                 String password = request.getParameter("user.password");
                 response.sendRedirect("profile.jsp");
-                
                 
                 try{
                     User user = User.getUser(login, password);

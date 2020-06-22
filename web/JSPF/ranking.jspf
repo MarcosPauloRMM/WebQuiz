@@ -1,21 +1,36 @@
+<%-- 
     Document   : ranking
-    Created on : 21/06/2020, 14:22:08
+    Created on : 09/11/2018, 23:35:37
     Author     : MarcosPauloRMM
+--%>
 
 
+<%@page import="db.Attempt"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<h2  class="text-center">Ranking</h2>
-<table class="table table-striped mt-2">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Nota</th>
-        </tr>
-    </thead>
-    <tbody>
-   
-    </tbody>
 
-</table>
+
+<h2   class="text-center">Ranking dos Campeões</h2>
+    <table class="table table-striped mt-2">
+        <thead>
+            <tr>
+                <th style='text-align:center'>Nome:</th>
+                <th style='text-align:center'>Nota:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                 <%for(Attempt list : new Attempt().getRanking()){%>
+                    <tr>
+                        <td style='text-align:center'>
+                           <%=list.getLogin()%>                                        
+                        </td>  
+                        <td style='text-align:center'>
+                           <%=list.getResult()%>                                        
+                        </td>  
+                       <%}%>
+                    </tr>
+            </tr> 
+        </tbody>                          
+    </table>
