@@ -22,7 +22,7 @@ if (request.getParameter("sigin") != null) {
     String password = request.getParameter("password");
     try {
         User.addUser(name, login, password);
-        response.sendRedirect("profile.jsp");
+        response.sendRedirect("home.jsp");
         session.setAttribute("user.name", name);
         session.setAttribute("user.login", login);
     } catch (Exception e) {

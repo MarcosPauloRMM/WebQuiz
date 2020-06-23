@@ -19,7 +19,6 @@
         <div class="jumbotron text-center">
             <h1>Responda o Quiz Abaixo!</h1>  
             <br>
-            <hr>
         </div>
         <form method="post">
             

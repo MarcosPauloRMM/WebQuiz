@@ -11,7 +11,7 @@
 <%@include file="WEB-INF/JSPF/logged.jspf" %>
 <%    
     if (logged != null) {
-        response.sendRedirect("profile.jsp");
+        response.sendRedirect("home.jsp");
     }
 
 %>
@@ -30,9 +30,10 @@
           <%
             String errorMessage = null;
             if(request.getParameter("session.login") != null){
+                String name = request.getParameter("user.name");
                 String login = request.getParameter("user.login");
                 String password = request.getParameter("user.password");
-                response.sendRedirect("profile.jsp");
+                response.sendRedirect("home.jsp");
                 
                 try{
                     User user = User.getUser(login, password);

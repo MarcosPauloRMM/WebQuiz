@@ -1,0 +1,18 @@
+<%-- 
+    Document   : menu
+    Created on : 17/06/2020, 21:52:08
+    Author     : MarcosPauloRMM
+--%>
+
+<h2 class="text-center">Minha Média:</h2>
+    <table class="table table-striped mt-2">
+        <thead>
+            <tr>
+                <th style='text-align:center'>Nota:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            </tr> 
+        </tbody>                          
+    </table>

@@ -32,7 +32,7 @@ import javax.servlet.ServletContextListener;
             //CRIANDO TABELA DE USUARIOS
             step = "users Table creation";
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS users ("
-                    + "name VARCHAR(150) NOT NULL,"
+                    + "name VARCHAR(500) NOT NULL,"
                     + "login VARCHAR(50) UNIQUE NOT NULL,"
                     + "password LONG NOT NULL"
                     + ")");
@@ -41,7 +41,7 @@ import javax.servlet.ServletContextListener;
             if (User.getUsers().isEmpty()){
                 //CRIANDO USUARIOS
                 stmt.executeUpdate("INSERT INTO users(name, login, password)"
-                    + "VALUES('Marcos Paulo da Rocha Moura', 'Marcos Paulo', '"+("123456".hashCode())+"')");  
+                    + "VALUES('Sergio', 'Marcos Paulo', '"+("123456".hashCode())+"')");  
                 stmt.executeUpdate("INSERT INTO users(name, login, password)"
                     + "VALUES('Ricardo Pupo Larguesa', 'Ricardo', '"+("123456".hashCode())+"')");  
                 }
