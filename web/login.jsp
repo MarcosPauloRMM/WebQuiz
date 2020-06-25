@@ -39,6 +39,7 @@
                     User user = User.getUser(login, password);
                     if(user == null){
                         errorMessage = "Login ou Senha incorreta ;-;";
+                        response.sendRedirect("login.jsp");
                     }else{
                         session.setAttribute("user.login", login);
                         session.setAttribute("user.name", user.getName());

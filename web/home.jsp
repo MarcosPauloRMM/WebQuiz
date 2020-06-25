@@ -5,8 +5,8 @@
 --%>
 
 
-<%@page import="db.Attempt"%>
-<%@page import="db.User"%>
+<%@page import="object.Attempt"%>
+<%@page import="object.User"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -37,10 +37,10 @@
             <div class="container">
                 <div class="row mt-2">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                        <%@ include file="WEB-INF/JSPF/media.jspf" %>
+                        Coluna da MEdia
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                        <%@ include file="WEB-INF/JSPF/myattempts.jspf" %>
+                        Minhas Tentativas
                     </div>
                 </div> 
             </div> 
@@ -50,10 +50,10 @@
         <div class="container">
             <div class="row mt-2">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                    <%@ include file="WEB-INF/JSPF/lastattempts.jspf" %>
+                    Ultima tentatibas
                 </div>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                    <%@ include file="WEB-INF/JSPF/ranking.jspf" %>
+                    Ranking
                 </div>
             </div>
         </div>
