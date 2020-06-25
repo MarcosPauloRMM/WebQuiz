@@ -4,16 +4,17 @@
     Author     : MarcosPauloRMM
 --%>
 
+
+<%@page import="object.User"%>
+<%@page import="control.ControlUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page import="db.User"%>
 <%@page import="web.DbListener"%>
 <%@include file="WEB-INF/JSPF/logged.jspf" %>
 <%    
     if (logged != null) {
         response.sendRedirect("home.jsp");
     }
-
 %>
 <!DOCTYPE html>
 <html>
@@ -29,30 +30,29 @@
                 <h1 class="mb-3">Login</h1>
           <%
             String errorMessage = null;
+                        
             if(request.getParameter("session.login") != null){
-                String name = request.getParameter("user.name");
-                String login = request.getParameter("user.login");
-                String password = request.getParameter("user.password");
-                response.sendRedirect("home.jsp");
-                
+                User user = new User();
+                user.setLogin(request.getParameter("user.login"));
+                user.setPassword(request.getParameter("user.pasword"));
                 try{
-                    User user = User.getUser(login, password);
+                    user = new ControlUser().login(user);
                     if(user == null){
-                        errorMessage = "Login ou Senha incorreta ;-;";
-                        response.sendRedirect("login.jsp");
+                        errorMessage = "Login ou senha incorretas ;-;";
                     }else{
-                        session.setAttribute("user.login", login);
-                        session.setAttribute("user.name", user.getName());
+                    session.setAttribute("user.login", user.getLogin());
+                    session.setAttribute("user.code", user.getCodeUser());
+                    session.setAttribute("user.name", user.getName());
+
+                    response.sendRedirect(request.getRequestURI());
                     }
                 }catch(Exception ex){
-                    errorMessage = ex.getMessage();
+                errorMessage = ex.getMessage();
                 }
-            }else if(request.getParameter("session.logout") != null){
-                session.removeAttribute("user.login");
-                session.removeAttribute("user.name");
             }
-            %>
-            <%if(session.getAttribute("user.login") == null){%>
+            if(session.getAttribute("user.login") == null)
+  {%>
+
                 <form method="post">
                     <div class="form-group">
                         <input class="form-control mb-3" type="text" id="user" name="user.login" placeholder="Login" required>

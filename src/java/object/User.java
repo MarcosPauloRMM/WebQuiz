@@ -5,109 +5,20 @@
  */
 package object;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import web.DbListener;
 
-/**
- *
- * @author MarcosPauloRMM
- */
 public class User {
-    
-    private String login;
+   
+    private String codeUser;
     private String name;
-    
-    public User(String login, String name) {
-        this.login = login;
-        this.name = name;
-    }
-    
-    //CRIANDO METODO PARA PEGAR USUARIOS
-    public static ArrayList<User> getUsers() throws Exception{
-        ArrayList<User> list = new ArrayList<>();
-        Class.forName("org.sqlite.JDBC");
-        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM users");
-        while(rs.next()){
-            list.add(new User(
-                    rs.getString("name"),
-                    rs.getString("login")));
-        }
-        rs.close();
-        stmt.close();
-        con.close();
-        return list;
-    }
-    
-    public static User getUser(String login, String password) throws Exception{
-        User user = null;
-        Class.forName("org.sqlite.JDBC");
-        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
-        String SQL = "SELECT * FROM users WHERE login=? AND password=?";
-        PreparedStatement stmt = con.prepareStatement(SQL);
-        stmt.setString(1, login);
-        stmt.setLong(2, password.hashCode());
-        ResultSet rs = stmt.executeQuery();
-        if(rs.next()){
-            user = new User(
-                    rs.getString("name"),
-                    rs.getString("login"));
-        }else{   
-        }
-        rs.close();
-        stmt.close();
-        con.close();
-        return user;
-    }
-    
-    public static void addUser(String name, String login, String password) throws Exception{
-        Class.forName("org.sqlite.JDBC");
-        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
-        String SQL = "INSERT INTO users(name, login, password) VALUES(?,?,?)";
-        PreparedStatement stmt = con.prepareStatement(SQL);
-        stmt.setString(1, name);
-        stmt.setString(2, login);
-        stmt.setLong(3, password.hashCode());
-        stmt.execute();
-        stmt.close();
-        con.close();
+    private String login;
+    private String password;
+
+    public String getCodeUser() {
+        return codeUser;
     }
 
-    public static User login(String login, String password) throws Exception {
-        User output = null;
-        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
-        String SQL = "SELECT * FROM users WHERE login=? AND password=?";
-        PreparedStatement stmt = con.prepareStatement(SQL);
-        stmt.setString(1, login);
-        stmt.setLong(2, password.hashCode());
-        ResultSet rs = stmt.executeQuery();
-        if(rs.next()){
-            output = new User(
-                    rs.getString("login"), 
-                    rs.getString("password"));
-        }else{
-            output = null;
-        }
-        rs.close();
-        stmt.close();
-        con.close();
-        return output;
-    
-    
-    
-    }
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
+    public void setCodeUser(String codeUser) {
+        this.codeUser = codeUser;
     }
 
     public String getName() {
@@ -118,5 +29,22 @@ public class User {
         this.name = name;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    
 
 }

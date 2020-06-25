@@ -22,6 +22,7 @@
     <body>
         
         <%@ include file="WEB-INF/JSPF/menu.jspf" %>
+        <!--IF E ELSE PARA MOSTRAR A TELA PADRÂO OU A TELA PERSONALIZADA DO USUARIO-->        
         <%  if (logged == null) {%>
             <div class="jumbotron text-center">         
                 <h1>Seja bem vindo ao desafio do Web Quiz.</h1>
@@ -36,12 +37,39 @@
             </div>
             <div class="container">
                 <div class="row mt-2">
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                        Coluna da MEdia
+                    <!--INICIO DO MOSTRANDO A MEDIA-->
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">                  
+                        <h2   class="text-center">Minhas Média</h2>
+                            <table class="table table-striped mt-2">
+                                <thead>
+                                    <tr>
+                                        <th style='text-align:center'>NOTA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                    </tr> 
+                                </tbody>                          
+                            </table>
                     </div>
+                    <!--FIM DO MOSTRANDO A MEDIA-->   
+                    
+                    <!--INICIO DO MOSTRANDO AS TENTATIVAS DO USUARIO-->
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                        Minhas Tentativas
+                        <h2   class="text-center">Minhas Tentativas</h2>
+                            <table class="table table-striped mt-2">
+                                <thead>
+                                    <tr>
+                                        <th style='text-align:center'>Nota:</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                    </tr> 
+                                </tbody>                          
+                            </table>
                     </div>
+                    <!--FIM DO MOSTRANDO AS TENTATIVAS DO USUARIO-->
                 </div> 
             </div> 
         <%}%>
@@ -49,12 +77,41 @@
         <hr>
         <div class="container">
             <div class="row mt-2">
+                <!--INICIO DO MOSTRANDO TODAS AS TENTATIVAS-->
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                    Ultima tentatibas
+                    <h2   class="text-center">Ultimas Tentativas</h2>
+                    <table class="table table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th style='text-align:center'>Nome:</th>
+                                <th style='text-align:center'>Nota:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                            </tr> 
+                        </tbody>                          
+                    </table>
                 </div>
+                <!--FIM DO MOSTRANDO TODAS AS TENTATIVAS-->
+                
+                <!--INICIO DO MOSTRANDO TODAS O RANKING-->
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-                    Ranking
+                    <h2   class="text-center">Ranking</h2>
+                    <table class="table table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th style='text-align:center'>Nome:</th>
+                                <th style='text-align:center'>Nota:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                            </tr> 
+                        </tbody>                          
+                    </table>
                 </div>
+                <!--FIM DO MOSTRANDO TODAS O RANKING-->
             </div>
         </div>
         <%@ include file="WEB-INF/JSPF/footer.jspf" %>

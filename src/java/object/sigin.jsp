@@ -4,7 +4,7 @@
     Author     : MarcosPauloRMM
 --%>
 
-<%@page import="control.ControlUser"%>
+<%@page import="db.User"%>
 <%@page import="web.DbListener"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@ if (request.getParameter("sigin") != null) {
     String password = request.getParameter("password");
     try {
         User.addUser(name, login, password);
-        response.sendRedirect("home.jsp");
+        response.sendRedirect("profile.jsp");
         session.setAttribute("user.name", name);
         session.setAttribute("user.login", login);
     } catch (Exception e) {
@@ -48,7 +48,7 @@ if (request.getParameter("sigin") != null) {
                         <input class="form-control mb-3" type="text" id="user" name="name" placeholder="Name" required>
                         <input class="form-control mb-3" type="text" id="user" name="login" placeholder="Login" required>
                         <input class="form-control mb-3" type="password" id="user" name="password" placeholder="Password" required>
-                        <button type="submit" class="btn btn-login" name="sigin" value="Log in">Cadastro</button>               
+                        <button type="submit" class="btn btn-login" name="session.login" value="Log in">Cadastro</button>               
                     </div>  
                 </form>
 

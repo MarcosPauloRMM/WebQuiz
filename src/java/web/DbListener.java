@@ -29,7 +29,7 @@ import javax.servlet.ServletContextListener;
              step = "Table 'users' creation";
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS users("
                     + "nameuser VARCHAR(200) NOT NULL,"
-                    + "loginusuario VARCHAR(20) PRIMARY KEY,"
+                    + "loginuser VARCHAR(20) PRIMARY KEY,"
                     + "password_hash LONG NOT NULL"
                     + ")");
             
