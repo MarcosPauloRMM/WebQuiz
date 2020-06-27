@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package db;
+package object;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,9 +18,6 @@ import web.DbListener;
  * @author MarcosPauloRMM
  */
 public class User {
-    
-    
-
     
     private String login;
     private String name;

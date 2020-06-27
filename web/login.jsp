@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@page import="db.User"%>
+<%@page import="object.User"%>
 <%@page import="web.DbListener"%>
 <%@include file="WEB-INF/JSPF/logged.jspf" %>
 <%    
@@ -39,6 +39,7 @@
                     User user = User.getUser(login, password);
                     if(user == null){
                         errorMessage = "Login ou Senha incorreta ;-;";
+                        response.sendRedirect("login.jsp");
                     }else{
                         session.setAttribute("user.login", login);
                         session.setAttribute("user.name", user.getName());

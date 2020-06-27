@@ -4,7 +4,7 @@
     Author     : MarcosPauloRMM
 --%>
 
-<%@page import="db.User"%>
+<%@page import="object.User"%>
 <%@page import="web.DbListener"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
