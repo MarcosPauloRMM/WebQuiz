@@ -4,8 +4,9 @@
     Author     : MarcosPauloRMM
 --%>
 
-<%@page import="db.User"%>
-<%@page import="db.Attempt"%>
+
+<%@page import="object.Attempt"%>
+<%@page import="control.ControlQuiz"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
