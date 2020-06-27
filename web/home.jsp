@@ -61,10 +61,16 @@
                     <table class="table table-striped mt-2">
                         <thead>
                             <tr>
+<<<<<<< HEAD
                                 <th style='text-align:center'>Usuário:</th>
                                 <th style='text-align:center'>Nota:</th>
                             </tr>
                             
+=======
+                                <th style='text-align:center'>Nome:</th>
+                                <th style='text-align:center'>Nota:</th>
+                            </tr>
+>>>>>>> 672b45e96be4e698c3ae14e1c7486ac968f9d967
                         </thead>
                         <tbody>
                             <tr

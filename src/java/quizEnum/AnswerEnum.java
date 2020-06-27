@@ -60,7 +60,11 @@ public enum AnswerEnum{
         ANSWER_1_QUESTION_9("1945", 9, false),
         ANSWER_2_QUESTION_9("1946", 9, true),
         ANSWER_3_QUESTION_9("1947", 9, false),
+<<<<<<< HEAD
         ANSWER_4_QUESTION_9("1948", 9, false),
+=======
+        ANSWER_4_QUESTION_9("1947", 9, false),
+>>>>>>> 672b45e96be4e698c3ae14e1c7486ac968f9d967
         
         //Quantos presidentes tivemso até 2020?
         ANSWER_1_QUESTION_10("39", 10, false),

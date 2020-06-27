@@ -18,7 +18,11 @@ public enum QuestionEnum {
     QUESTION_7("A pré-história está dividida em três periodos, ordenados cronologicamente são:"),
     QUESTION_8("O que significa URRS?"),
     QUESTION_9("Quando foi criado o primeiro computador?"),
+<<<<<<< HEAD
     QUESTION_10("Quantos presidentes tivesmo até 2020?");
+=======
+    QUESTION_10("Quantos presidentes tivemso até 2020?");
+>>>>>>> 672b45e96be4e698c3ae14e1c7486ac968f9d967
 
     private final String question;
     

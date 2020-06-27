@@ -78,7 +78,11 @@
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
+<<<<<<< HEAD
                         <h5 class="modal-title" id="exampleModalLongTitle"><%%>Resultado</h5>
+=======
+                        <h5 class="modal-title" id="exampleModalLongTitle">Resultado</h5>
+>>>>>>> 672b45e96be4e698c3ae14e1c7486ac968f9d967
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -111,7 +115,11 @@
     function showResults(){
         if(document.getElementById("quantidade-acertos").value !== '-1'){
             addClickConfirmResults();
+<<<<<<< HEAD
             document.getElementById("botao-alert").click();
+=======
+            document.getElementById("attempt").click();
+>>>>>>> 672b45e96be4e698c3ae14e1c7486ac968f9d967
         }
     }
     
@@ -122,7 +130,11 @@
     }
     
     function clickButtonAttempt(){
+<<<<<<< HEAD
         let buttonAttempt = document.getElementById("enviar-respostas");
+=======
+        let buttonAttempt = document.getElementById("enviar-respostas ");
+>>>>>>> 672b45e96be4e698c3ae14e1c7486ac968f9d967
         
         buttonAttempt.addEventListener("click", function(){
             recoverValues();

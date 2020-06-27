@@ -49,6 +49,7 @@ import javax.servlet.ServletContextListener;
                     + "codequestion INTEGER NOT NULL,"
                     + "rightanswer BOOLEAN NOT NULL,"
                     + "FOREIGN KEY (codequestion) REFERENCES question(codequestion)"
+<<<<<<< HEAD
                     + ")");
             
             //CRIANDO TABELA DE QUIZ
@@ -61,6 +62,10 @@ import javax.servlet.ServletContextListener;
                     + ")");
             
             
+=======
+                    + ")");
+
+>>>>>>> 672b45e96be4e698c3ae14e1c7486ac968f9d967
             stmt.close();
             con.close();
         }catch(Exception ex){
