@@ -27,10 +27,10 @@ public class ControlQuiz {
     public static ArrayList<Attempt> getRanking() throws SQLException{
         ArrayList<Attempt> listAttempts = new ArrayList<>();
        
-       String query = "SELECT t.codetest, t.coderesult, u.nameuser "
-                    + "FROM test t  "
-                    + "INNER JOIN user u where t.codeuser = u.rowid  "
-                    + " order by t.coderesult desc LIMIT 10;";
+       String query = "SELECT a.codetest, a.coderesult, u.nameuser "
+                    + "FROM attempts a  "
+                    + "INNER JOIN user u where a.codeuser = u.rowid  "
+                    + " order by a.coderesult desc LIMIT 10;";
       
        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
        PreparedStatement stmt = con.prepareStatement(query);
@@ -56,7 +56,7 @@ public class ControlQuiz {
     public static ArrayList<Attempt> getLastAttemptsUser(String codeUser) throws ClassNotFoundException, SQLException{
        ArrayList<Attempt> listAttempts = new ArrayList<>();
        
-       String query = "SELECT * FROM testes where codeuser = ? order by rowid desc LIMIT 10";
+       String query = "SELECT * FROM attempts where codeuser = ? order by rowid desc LIMIT 10";
       
        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
        PreparedStatement stmt = con.prepareStatement(query);
@@ -83,10 +83,10 @@ public class ControlQuiz {
     public static ArrayList<Attempt> getLastAttempts() throws ClassNotFoundException, SQLException{
        ArrayList<Attempt> listAttempts = new ArrayList<>();
        
-       String query = "SELECT t.cd_teste, t.cd_resultado, u.nm_usuario "
-                    + "FROM teste t  "
-                    + "INNER JOIN usuario u where t.cd_usuario = u.rowid  "
-                    + " order by t.rowid desc LIMIT 10;";
+       String query = "SELECT a.codeattempt, a.coderesult, u.name "
+                    + "FROM attempt a  "
+                    + "INNER JOIN user u where a.codeuser = u.rowid  "
+                    + " order by a.rowid desc LIMIT 10;";
       
       
        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
@@ -95,13 +95,13 @@ public class ControlQuiz {
        ResultSet rs = stmt.executeQuery();
        
         while(rs.next()){
-            Attempt test = new Attempt();
+            Attempt attempt = new Attempt();
             
-            test.setCodeAttempt(valueOf(rs.getInt("cd_teste")));
-            test.setResult(valueOf(rs.getInt("cd_resultado")));
-            test.setNameUser(rs.getString("nm_usuario"));
+            attempt.setCodeAttempt(valueOf(rs.getInt("codeattempt")));
+            attempt.setResult(valueOf(rs.getInt("coderesult")));
+            attempt.setNameUser(rs.getString("name"));
             
-            listAttempts.add(test);
+            listAttempts.add(attempt);
         }
         
         rs.close();
@@ -131,7 +131,7 @@ public class ControlQuiz {
        
         codeUser = "1";
         
-        String query = "INSERT INTO teste values (?,?, ?)";
+        String query = "INSERT INTO attempts values (?,?, ?)";
         stmt = con.prepareStatement(query);
 
         stmt.setInt(1, searchLastAttemptsOfQuiz()+1);
@@ -148,7 +148,7 @@ public class ControlQuiz {
     private static int searchLastAttemptsOfQuiz() throws SQLException, ClassNotFoundException{
        int ultimoCodigo = 0;
        
-       String query = "SELECT cd_teste FROM teste order by rowid desc LIMIT 1 ";
+       String query = "SELECT codeattempt FROM attempts order by rowid desc LIMIT 1 ";
        Class.forName("org.sqlite.JDBC");
        Connection con = DriverManager.getConnection(DbListener.jdbcUrl);
        Statement stmt =  con.createStatement();
@@ -156,7 +156,7 @@ public class ControlQuiz {
        ResultSet rs = stmt.executeQuery(query);
        
         while(rs.next()){
-            ultimoCodigo =  rs.getInt("cd_teste");
+            ultimoCodigo =  rs.getInt("codeattempt");
         }
         
         rs.close();

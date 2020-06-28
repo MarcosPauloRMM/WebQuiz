@@ -30,7 +30,7 @@
     attempt.setCodeAnswer(request.getParameter("codigos-respostas"));
     attempt.setCodeUser(request.getParameter("codeUser"));
     
-    if(request.getParameter("enviar")!=null){
+    if(request.getParameter("enviar-respostas")!=null){
         try{
             numberResults = new ControlQuiz().getResultQuiz(attempt);
         }catch(Exception ex){
@@ -68,21 +68,19 @@
                         
                          <%=alternative.getAnswer()%>
                          <br/>
-                    <%}%>
-                    <hr/>
-                    <%j++;%>
-                    
+                    <%}
+
+                    j++;%>
+                         <hr/>
                 <%}%>
                 <button type="button" class="btn btn-primary d-none" data-toggle="modal" id="botao-alert" data-target="#modal-alerta-quantidade-acertos"></button>
                 <div class="modal fade" id="modal-alerta-quantidade-acertos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-<<<<<<< HEAD
-                        <h5 class="modal-title" id="exampleModalLongTitle"><%%>Resultado</h5>
-=======
+
                         <h5 class="modal-title" id="exampleModalLongTitle">Resultado</h5>
->>>>>>> 672b45e96be4e698c3ae14e1c7486ac968f9d967
+
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -99,8 +97,9 @@
                       
                 <input type="hidden" name="codigos-perguntas" id="codigos-perguntas" />
                 <input type="hidden" name="codigos-respostas" id="codigos-respostas" />
-                <button type="button" class="btn btn-danger" id="enviar-respostas" value="enviar">Enviar Respostas</button>
-                <input type="submit" name="enviar"  style="display:none" id="submitar-form" value="enviar" />
+                    <button type="button"  class="btn btn-danger" id="enviar-respostas" value="enviar-respostas">Enviar Respostas</button>
+                    <input type="submit" name="enviar"  style="display:none" id="submitar-form" value="submitar-respostas" />
+                
             </form>
          
     <%@ include file="WEB-INF/JSPF/footer.jspf" %>
@@ -115,11 +114,9 @@
     function showResults(){
         if(document.getElementById("quantidade-acertos").value !== '-1'){
             addClickConfirmResults();
-<<<<<<< HEAD
+
             document.getElementById("botao-alert").click();
-=======
             document.getElementById("attempt").click();
->>>>>>> 672b45e96be4e698c3ae14e1c7486ac968f9d967
         }
     }
     
@@ -130,11 +127,7 @@
     }
     
     function clickButtonAttempt(){
-<<<<<<< HEAD
         let buttonAttempt = document.getElementById("enviar-respostas");
-=======
-        let buttonAttempt = document.getElementById("enviar-respostas ");
->>>>>>> 672b45e96be4e698c3ae14e1c7486ac968f9d967
         
         buttonAttempt.addEventListener("click", function(){
             recoverValues();
@@ -144,7 +137,7 @@
     
     function recoverValues(){
         var answer = document.querySelectorAll('input[name^="resposta-"]'); 
-        var test = {
+        var attempt = {
             codeQuestion : [] ,
             codeAnswer : []
         };
@@ -152,19 +145,19 @@
         let j =0;
         for(i = 0; i < answer.length; i++) { 
             if(answer[i].checked) {
-                test.codeAnswer[j] = answer[i].value.split("-")[0];
-                test.codeQuestion[j] = answer[i].value.split("-")[1];
+                attempt.codeAnswer[j] = answer[i].value.split("-")[0];
+                attempt.codeQuestion[j] = answer[i].value.split("-")[1];
                 contador++;
                 j++;
                 
             }
         }
-        if(test.codeAnswer.length === 10){
-            document.getElementById("codigos-respostas").value = test.codeAnswer; 
-            document.getElementById("codigos-perguntas").value = test.codeQuestion;
+        if(attempt.codeAnswer.length === 10){
+            document.getElementById("codigos-respostas").value = attempt.codeAnswer; 
+            document.getElementById("codigos-perguntas").value = attempt.codeQuestion;
             document.getElementById("submitar-form").click();
         }else{
-            alert("Responda todas as questões para continuar");
+            alert("Voce precisa responder todas as questões para continuar");
         }
     }
 

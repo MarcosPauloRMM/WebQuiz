@@ -5,11 +5,15 @@
  */
 package object;
 
+import control.ControlQuiz;
+import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import web.DbListener;
 
@@ -98,10 +102,22 @@ public class User {
         stmt.close();
         con.close();
         return output;
-    
-    
-    
     }
+    
+    public static String getMediaUsuario(String codeUser) throws ClassNotFoundException, SQLException {
+		ArrayList<Attempt> allAttemptsResults = ControlQuiz.getLastAttemptsUser(codeUser);
+		double somaTotal = 0;
+		DecimalFormat df = new DecimalFormat("#.00");
+
+		for (Attempt attempt : allAttemptsResults) {
+			somaTotal = somaTotal + parseInt(attempt.getResult());
+		}
+		return df.format(somaTotal / allAttemptsResults.size());
+	}
+    
+    
+    
+    
     public String getLogin() {
         return login;
     }
